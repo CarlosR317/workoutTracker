@@ -1,4 +1,4 @@
-const db = require("../models");
+const db = require("../models/workout");
 
 require("mongoose");
 
@@ -79,7 +79,7 @@ module.exports = (app) => {
 
     app.get("*", (req, res) => {
 
-        res.redirect("/");
+        res.redirect("/public/exercise.html");
 
     });
 
