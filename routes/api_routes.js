@@ -1,6 +1,5 @@
 const db = require("../models/workout");
-
-require("mongoose");
+const mongoose = require("mongoose");
 
 module.exports = (app) => {
 
@@ -40,39 +39,25 @@ module.exports = (app) => {
 
     });
 
-    // searches for workout by range no more than 6
+    // searches for workout by range no more than 7
 
     app.get("/api/workouts/range", (req, res) => {
 
-
-        db.Workout.find({}).limit(6).then(data => res.json(data))
-
+        db.Workout.find({}).limit(7).then(data => res.json(data))
             .catch(err => {
-
                 console.log("error", err);
-
                 res.json(err);
-
             });
-
     });
 
     // get the last workout
 
     app.get("/api/workouts", (req, res) => {
-
-
         db.Workout.find({}).then(data => res.json(data))
-
-
             .catch(err => {
-
                 console.log("error", err);
-
                 res.json(err);
-
             });
-
     });
 
     // puts it all on the "/"
