@@ -1,3 +1,5 @@
+I struggle with this assingment but I was able to get it to work. The user can add an exercise. It took me a while to get the db connected correctly but was able to eventually get it. below is the readMe for the assingment 
+
 # Unit 17 Nosql Homework: Workout Tracker
 
 For this assignment, you'll create a workout tracker. You have already been provided with the front end code in the `Develop` folder. This assignment will require you to create Mongo database with a Mongoose schema and handle routes with Express.
