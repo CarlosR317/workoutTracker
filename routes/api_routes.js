@@ -1,21 +1,18 @@
 const db = require("../models/workout");
-const mongoose = require("mongoose");
+require("mongoose");
 
 module.exports = (app) => {
 
 
-    // creating or posting a workout
+    // creating/posting a workout
 
     app.post("/api/workouts", (req, res) => {
 
         db.Workout.create({}).then(data => res.json(data))
 
             .catch(err => {
-
                 console.log("error", err);
-
                 res.json(err);
-
             });
     });
 
@@ -56,13 +53,5 @@ module.exports = (app) => {
                 res.json(err);
             });
     });
-
-    // puts it all on the "/"
-    app.get("*", (req, res) => {
-
-        res.redirect("/public/exercise.html");
-
-    });
-
-
+   
 };
