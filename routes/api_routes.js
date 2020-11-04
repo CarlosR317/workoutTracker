@@ -1,4 +1,4 @@
-const db = require("../models/workout");
+const db = require("../models");
 require("mongoose");
 
 module.exports = (app) => {
@@ -9,9 +9,9 @@ module.exports = (app) => {
         db.Workout.find({}).then(data => res.json(data))
             .catch(err => {
                 console.log("error", err);
-        });
-    
-});
+            });
+
+    });
 
     // creating/posting a workout
     app.post("/api/workouts", (req, res) => {
@@ -24,14 +24,14 @@ module.exports = (app) => {
             }
         })
     });
-   
+
     // route for updating new exercise
     app.put("/api/workouts/:id", (req, res) => {
 
         db.Workout.findByIdAndUpdate(req.params.id,
 
             { $push: { exercises: req.body } },
-            { new: true, runValidators: true },
+            { new: true },
             (err, data) => {
                 if (err) {
                     console.log("error", err);
@@ -53,4 +53,3 @@ module.exports = (app) => {
             });
     });
 }
-     
