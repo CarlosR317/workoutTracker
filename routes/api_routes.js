@@ -8,12 +8,13 @@ module.exports = (app) => {
 
     app.post("/api/workouts", (req, res) => {
 
-        db.Workout.create({}).then(data => res.json(data))
-
-            .catch(err => {
-                console.log("error", err);
-                res.json(err);
-            });
+        db.Workout.create({}, (err, data) => {
+            if(err) {
+                console.log(err);
+            } else {
+                res.json(data)
+            }
+        })
     });
 
     // finding workout by id

@@ -15,8 +15,8 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// connecting to mongo db
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true, useCreateIndex: true});
+// connecting to mongo db (recommended to add useUnifiedTopology)
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 
 
 require("./routes/api_routes")(app);
