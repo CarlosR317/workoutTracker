@@ -1,4 +1,4 @@
-const Workout = require("../models/workout")
+const Workout = require("./workout")
 
 module.exports = {   
      Workout: Workout 

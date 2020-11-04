@@ -38,7 +38,7 @@ const WorkoutSchema = new Schema({
     ]
 },
 
-    //referenced from mongoosejs.com- virtuals
+    //referenced from mongoosejs.com- this will activate the "virtuals"
     { toJSON: { virtuals: true } });
 
 WorkoutSchema.virtual("totalDuration").get(function () {
