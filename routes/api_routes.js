@@ -26,32 +26,29 @@ module.exports = (app) => {
 
             { $push: { exercises: req.body } },
             { new: true, runValidators: true })
-
             .then(data => res.json(data))
-
             .catch(err => {
-
                 console.log("error", err);
-
                 res.json(err);
 
             });
-
     });
 
-    // searches for workout by range no more than 7
-
+    // searches for workout by range 
     app.get("/api/workouts/range", (req, res) => {
 
-        db.Workout.find({}).limit(7).then(data => res.json(data))
+        db.Workout.find({}).sort({ day: 1 }).limit(7).then(data => {
+            console.log(data)
+            res.json(data)
+        })
             .catch(err => {
                 console.log("error", err);
                 res.json(err);
             });
+
     });
 
     // get the last workout
-
     app.get("/api/workouts", (req, res) => {
         db.Workout.find({}).then(data => res.json(data))
             .catch(err => {
@@ -61,7 +58,6 @@ module.exports = (app) => {
     });
 
     // puts it all on the "/"
-
     app.get("*", (req, res) => {
 
         res.redirect("/public/exercise.html");
