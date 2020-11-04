@@ -15,18 +15,8 @@ module.exports = (app) => {
             }
         })
     });
-    // searches for recent workout
-    app.get("/api/workouts", (req, res) => {
-
-        db.Workout.find({}, (err, data) => {
-            if (err) {
-                console.log("error", err);
-            } else {
-                res.json(data)
-            }
-        })
-    });
-    // finding workout by id
+   
+    // route for updating new exercise
     app.put("/api/workouts/:id", (req, res) => {
 
         db.Workout.findByIdAndUpdate(req.params.id,
@@ -52,5 +42,16 @@ module.exports = (app) => {
             .catch(err => {
                 console.log("error", err);
             });
+    });
+     // searches for recent workout
+     app.get("/api/workouts", (req, res) => {
+
+        db.Workout.find({}, (err, data) => {
+            if (err) {
+                console.log("error", err);
+            } else {
+                res.json(data)
+            }
+        })
     });
 };
